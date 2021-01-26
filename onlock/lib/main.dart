@@ -2,20 +2,74 @@ import 'package:flutter/material.dart';
 import 'package:local_auth/local_auth.dart';
 import 'package:flutter/services.dart';
 import 'package:local_auth/error_codes.dart' as auth_error;
+import 'package:flutter/cupertino.dart';
+import 'package:splashscreen/splashscreen.dart';
+
 
 void main() => runApp(MyLock());
 
+
+//Splash Screen - Tela de entrada
 class MyLock extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Fechadura Eletônica',
-      home: Telainicial(),
+      title: 'Splash Screen',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: MyHomePage(title: 'Splash Screen Flutter'),
     );
   }
 }
+class MyHomePage extends StatefulWidget {
+  MyHomePage({Key key, this.title}) : super(key: key);
+  final String title;
 
+  @override
+  _MyHomePageState createState() => _MyHomePageState();
+}
+
+
+class _MyHomePageState extends State<MyHomePage> {
+  @override
+  Widget build(BuildContext context) {
+    return _introScreen();
+  }
+}
+
+Widget _introScreen() {
+  return Stack(
+    children: <Widget>[
+      SplashScreen(
+        seconds: 5,
+        gradientBackground: LinearGradient(
+          begin: Alignment.topRight,
+          end: Alignment.bottomLeft,
+          colors: [
+            Color(0xff9e9e9e),
+            Color(0xffffffff),
+          ],
+        ),
+        navigateAfterSeconds: Telainicial(),
+        loaderColor: Colors.transparent,
+      ),
+      Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("assets/logo.jpeg"),
+            fit: BoxFit.none,
+          ),
+        ),
+      ),
+    ],
+  );
+}
+
+
+
+//Tela inicial ao abrir o App
 class Telainicial extends StatefulWidget {
   @override
   _Telainicial createState() => _Telainicial();
@@ -28,8 +82,16 @@ class _Telainicial extends State<Telainicial> {
   var _icone = Icons.lock;
   var _colorIcon = Colors.yellow;
   var _colorButton = Colors.blue;
+  var _selectedIndex = 0;
 
   final LocalAuthentication _localAuth = LocalAuthentication();
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    }
+    );
+  }
 
   Future<void> _checkBiometricSensor() async {
     try {
@@ -99,7 +161,8 @@ class _Telainicial extends State<Telainicial> {
                     ],
                   ),
                 ),
-              )),
+              )
+          ),
           Padding(
             padding: EdgeInsets.only(top: 15),
             child: Row(
@@ -112,11 +175,31 @@ class _Telainicial extends State<Telainicial> {
                       color: _colorButton,
                       child: Icon(Icons.fingerprint, size: 80),
                       onPressed: _checkBiometricSensor,
-                    )),
+                    )
+                ),
               ],
             ),
           ),
         ],
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.accessibility),
+            label: 'Dados',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.access_time),
+            label: 'Histórico',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.account_circle),
+            label: 'Perfil',
+          ),
+        ],
+        currentIndex: _selectedIndex,
+        selectedItemColor: Colors.pink,
+        onTap: _onItemTapped,
       ),
     );;
   }
