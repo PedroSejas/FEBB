@@ -120,21 +120,17 @@ class _Telainicial extends State<Telainicial> {
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
+            icon: Icon(Icons.login),
+            label: 'Cadastro',
           ),
-          /*BottomNavigationBarItem(
+          BottomNavigationBarItem(
             icon: Icon(Icons.access_time),
             label: 'Histórico',
-          ),*/
+          ),
           BottomNavigationBarItem(
             icon: Icon(Icons.fingerprint),
             label: 'Acesso',
-          ),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.login),
-              label: 'Login',
-          ),
+          )
         ],
         currentIndex: _selectedIndex,
         selectedItemColor: Colors.pink,

@@ -29,7 +29,7 @@ Widget _introScreen() {
           begin: Alignment.topRight,
           end: Alignment.bottomLeft,
           colors: [
-            Color(0xff9e9e9e),
+            Color(0xff64b5f6),
             Color(0xffffffff),
           ],
         ),
@@ -39,7 +39,7 @@ Widget _introScreen() {
       Container(
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage("assets/logo.jpeg"),
+            image: AssetImage("assets/Logo2.png"),
             fit: BoxFit.none,
           ),
         ),
