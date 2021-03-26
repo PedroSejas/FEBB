@@ -22,7 +22,16 @@ environment:
 
 dependencies:
   splashscreen: ^1.2.0
-  local_auth: ^0.4.0+1
+  #local_auth: ^0.4.0+1
+  local_auth: ^0.6.3+4
+  #firebase_core: ^0.4.0+8
+  firebase_core: ^0.7.0
+  #firebase_analytics: ^4.0.2
+  #firebase_auth: ^0.14.0
+  firebase_auth: ^0.20.0+1
+  #firebase_database: ^3.0.5
+  firebase_database: ^6.0.0
+
   flutter:
     sdk: flutter
 
@@ -47,6 +56,7 @@ flutter:
   uses-material-design: true
   assets:
     - assets/Logo2.png
+    - assets/Logo.png
 
 
   # To add assets to your application, add an assets section, like this:

@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:onlock/Login/login.dart';
 import 'package:splashscreen/splashscreen.dart';
 
 import 'TelaInicial.dart';
@@ -39,7 +40,7 @@ Widget _introScreen() {
       Container(
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage("assets/Logo2.png"),
+            image: AssetImage("assets/Logo.png"),
             fit: BoxFit.none,
           ),
         ),
