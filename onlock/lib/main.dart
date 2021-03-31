@@ -11,6 +11,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.bottom]);
   await Firebase.initializeApp();
+
   runApp(MyLock());
 }
 
@@ -20,6 +21,7 @@ class MyLock extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Splash Screen',
       theme: ThemeData(
         primarySwatch: Colors.blue,

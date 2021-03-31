@@ -1,9 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:local_auth/local_auth.dart';
-import 'package:local_auth/error_codes.dart' as auth_error;
 import 'package:onlock/Login/login.dart';
+import 'package:onlock/Telas/TelaPerfil.dart';
 
 import 'TelaBiometria.dart';
 
@@ -42,7 +40,19 @@ class _Telainicial extends State<Telainicial> {
   Widget build(BuildContext context) {
       return Scaffold(
         appBar: AppBar(
-          title: Text("OnLock - Fechadura Eletrônica"),
+          title: Text("Início"),
+          centerTitle: true,
+          actions: <Widget>[
+            IconButton(
+              icon: Icon(Icons.person_outline),
+              onPressed: (){
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => TelaPerfil())
+                );
+              },
+            )
+          ]
         ),
         backgroundColor: Colors.white,
         body: Container(

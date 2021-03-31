@@ -64,7 +64,8 @@ class _TelaBiometriaState extends State<TelaBiometria> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("OnLock - Fechadura Eletrônica"),
+        title: Text("Acesso"),
+        centerTitle: true,
       ),
       backgroundColor: Colors.grey,
       body: Column(
